@@ -2,8 +2,16 @@
 import grpc
 from concurrent import futures
 from cryptography.fernet import Fernet
-import genetic_data_pb2 as pb2
-import genetic_data_pb2_grpc as pb2_grpc
+
+# Encrypted Genetic Data
+class EncryptedGeneticData:
+    def __init__(self, encrypted_payload):
+        self.encrypted_payload = encrypted_payload
+
+# Encrypted Response
+class EncryptedResponse:
+    def __init__(self, encrypted_payload):
+        self.encrypted_payload = encrypted_payload
 
 # Encryption Helper
 class EncryptionHelper:
@@ -17,7 +25,7 @@ class EncryptionHelper:
         return self.cipher.decrypt(encrypted_message.encode()).decode()
 
 # gRPC Service Implementation
-class GeneticAnalysisService(pb2_grpc.GeneticAnalysisServicer):
+class GeneticAnalysisService:
     def __init__(self, encryption_helper):
         self.encryption_helper = encryption_helper
 
@@ -29,26 +37,22 @@ class GeneticAnalysisService(pb2_grpc.GeneticAnalysisServicer):
             response_payload = f"Identified {len(disorders)} genetic disorders. Details: {', '.join(disorders)}"
             encrypted_response = self.encryption_helper.encrypt(response_payload)
 
-            response = pb2.EncryptedResponse(
+            return EncryptedResponse(
                 encrypted_payload=encrypted_response.decode()
             )
         except Exception as e:
             error_message = f"Error during analysis: {str(e)}"
             encrypted_error = self.encryption_helper.encrypt(error_message)
-            response = pb2.EncryptedResponse(
+            return EncryptedResponse(
                 encrypted_payload=encrypted_error.decode()
             )
-        return response
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     encryption_key = Fernet.generate_key()
     encryption_helper = EncryptionHelper(encryption_key)
 
-    pb2_grpc.add_GeneticAnalysisServicer_to_server(
-        GeneticAnalysisService(encryption_helper), server
-    )
-
+    service = GeneticAnalysisService(encryption_helper)
     print("Starting server on port 50051...")
     server.add_insecure_port("[::]:50051")
     server.start()
