@@ -1,5 +1,7 @@
 
-# Genetic Disease Healthcare App
+# GenDan 
+
+"RIP Darren"
 
 ## Overview
 This application uses hidden, encrypted message definitions for secure genetic data handling. Data is encrypted during communication, ensuring high levels of privacy and security.
