@@ -3,15 +3,17 @@ import grpc
 from concurrent import futures
 from cryptography.fernet import Fernet
 
-# Encrypted Genetic Data
-class EncryptedGeneticData:
-    def __init__(self, encrypted_payload):
-        self.encrypted_payload = encrypted_payload
+class EncryptedMessage:
+    def __init__(self, payload):
+        self.payload = payload
 
-# Encrypted Response
-class EncryptedResponse:
-    def __init__(self, encrypted_payload):
-        self.encrypted_payload = encrypted_payload
+    @staticmethod
+    def encrypt_payload(data, cipher):
+        return cipher.encrypt(data.encode())
+
+    @staticmethod
+    def decrypt_payload(data, cipher):
+        return cipher.decrypt(data.encode()).decode()
 
 # Encryption Helper
 class EncryptionHelper:
@@ -31,21 +33,17 @@ class GeneticAnalysisService:
 
     def AnalyzeGeneticData(self, request, context):
         try:
-            decrypted_payload = self.encryption_helper.decrypt(request.encrypted_payload)
+            decrypted_payload = self.encryption_helper.decrypt(request.payload)
             disorders = ["Disease A", "Disease B"] if "mutation" in decrypted_payload else []
 
             response_payload = f"Identified {len(disorders)} genetic disorders. Details: {', '.join(disorders)}"
             encrypted_response = self.encryption_helper.encrypt(response_payload)
 
-            return EncryptedResponse(
-                encrypted_payload=encrypted_response.decode()
-            )
+            return EncryptedMessage(payload=encrypted_response.decode())
         except Exception as e:
             error_message = f"Error during analysis: {str(e)}"
             encrypted_error = self.encryption_helper.encrypt(error_message)
-            return EncryptedResponse(
-                encrypted_payload=encrypted_error.decode()
-            )
+            return EncryptedMessage(payload=encrypted_error.decode())
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

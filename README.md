@@ -2,10 +2,11 @@
 # Genetic Disease Healthcare App
 
 ## Overview
-This application provides secure genetic data handling with full encryption. All data communications are encrypted, ensuring high levels of security and privacy.
+This application uses hidden, encrypted message definitions for secure genetic data handling. Data is encrypted during communication, ensuring high levels of privacy and security.
 
 ## Features
-- Fully encrypted data communication.
+- Hidden and encrypted data message definitions.
+- Fully encrypted communication.
 - Automated CI/CD workflows.
 
 ## Setup
