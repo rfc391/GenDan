@@ -1,8 +1,10 @@
 
-# Genetic Disease Healthcare App
+# GenDan
 
 ## Overview
 This application provides precision medicine services using encrypted genetic data. It leverages gRPC for communication, Protobuf for data serialization, and advanced encryption for security.
+
+"R.I.P Darren"
 
 ## Features
 - Fully encrypted payload communication.
