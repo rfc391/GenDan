@@ -1,31 +1,23 @@
-
-# GenDan 
-
-"RIP Darren"
+# GenDan
 
 ## Overview
-This application uses hidden, encrypted message definitions for secure genetic data handling. Data is encrypted during communication, ensuring high levels of privacy and security.
+Provide an overview of the project and its purpose.
 
 ## Features
-- Hidden and encrypted data message definitions.
-- Fully encrypted communication.
-- Automated CI/CD workflows.
+- List
+- Of
+- Key
+- Features
 
-## Setup
-1. Install dependencies:
-   ```bash
-   pip install grpcio cryptography
-   ```
-2. Run the server:
-   ```bash
-   python backend/genetic_app_backend.py
-   ```
+## Usage
+Instructions for usage.
 
-## Testing
-Run tests using:
-```bash
-python -m unittest discover -s tests
-```
+## Installation
+Steps for installation.
 
-## CI/CD
-Automated workflows for integration and testing are included.
+## Protocol Buffers
+Details on Protobuf usage in the project.
+
+## Contributors
+- Name 1
+- Name 2
