@@ -1,6 +1,4 @@
 
-import grpc
-from concurrent import futures
 from cryptography.fernet import Fernet
 
 class EncryptedMessage:
@@ -18,7 +16,18 @@ class EncryptedMessage:
 # Encryption Helper
 class EncryptionHelper:
     def __init__(self, key):
+        self.key = key
+class EncryptionHelper:
+    def __init__(self, key):
         self.cipher = Fernet(key)
+    def encrypt(self, message):
+        cipher = Fernet(self.key)
+        return cipher.encrypt(message.encode())
+
+    def decrypt(self, encrypted_message):
+        cipher = Fernet(self.key)
+        return cipher.decrypt(encrypted_message.encode()).decode()
+
 
     def encrypt(self, message):
         return self.cipher.encrypt(message.encode())
@@ -46,7 +55,6 @@ class GeneticAnalysisService:
             return EncryptedMessage(payload=encrypted_error.decode())
 
 def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     encryption_key = Fernet.generate_key()
     encryption_helper = EncryptionHelper(encryption_key)
 

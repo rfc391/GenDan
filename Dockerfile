@@ -1,8 +1,14 @@
-FROM python:3.9-slim
-WORKDIR /app
-COPY . /app
-RUN pip install -r requirements.txt
-CMD ["python", "main.py"]
 
-# Install gRPC tools
-RUN pip install grpcio grpcio-tools
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy project files into the container
+COPY . /app
+
+# Install required dependencies
+RUN pip install -r requirements.txt
+
+# Command to run the application
+CMD ["python", "main.py"]
