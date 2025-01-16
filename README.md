@@ -1,59 +1,61 @@
 
-# GenDan 
+# GenDan
 
 ## Overview
-GenDan revolutionizes precision medicine by integrating genetic data with advanced analytics to identify and manage genetic disorders. This Python-based application combines innovation with healthcare expertise, driving advancements in genetic analysis and personalized treatment strategies.
+GenDan revolutionizes precision medicine by integrating genetic data with advanced analytics to identify and manage genetic disorders. 
+This application is built with Python and incorporates robust encryption mechanisms, AI-powered analysis, and scalable architecture.
 
 ## Key Features
-- **Event-Driven Architecture (EDA)**: Kafka and RabbitMQ for scalable and reliable messaging.
-- **AI Engine**: Integration with OpenCV, ONNX, and NVIDIA Triton for high-performance processing.
-- **Secure Communication**: gRPC with Protobuf and Quiche/HTTP3 for low-latency and encrypted data exchange.
-- **Databases**:
-  - **Time-Series**: InfluxDB for real-time data analytics.
-  - **Transactional**: Cloudflare D1/PostgreSQL for robust and compliant database management.
-  - **Immutable Storage**: immudb with IPFS for tamper-proof and decentralized storage.
-- **Security**:
-  - Zero Trust architecture with Cloudflare.
-  - Quantum-safe encryption using QKD and PQC.
-- **Performance**: Optimized for edge computing with Cloudflare Workers and enhanced caching with Redis.
-- **Standards**: Compliant with ISO 27001/27701, GDPR, and aligned with DARPA guidelines.
+- **Military-Grade Security**: Hybrid encryption combining RSA, Fernet, and HMAC.
+- **Scalable Architecture**: Event-Driven Design using Kafka and RabbitMQ.
+- **AI-Driven Insights**: Integrates OpenCV, ONNX, and NVIDIA Triton for high-performance analytics.
+- **Cross-Platform Accessibility**: Compatible with all major devices and platforms.
 
-## Integration with BioWorks Hub
-The project supports initiatives under the Heartland BioWorks Hub, including:
-- **BioTrain**: Training resources and user onboarding documentation for future biotech workers.
-- **BioLaunch**: Infrastructure and scalability for biotech startups leveraging the platform.
-- **BioWorks HQ**: Resources for demonstrations, training sessions, and operational excellence.
+## Quick Start
 
-## Installation
+### Prerequisites
+- Python 3.11 or higher
+- Docker
+- Pip
+
+### Installation
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/rfc391/GenDan.git
-    cd GenDan
-    ```
-2. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-3. Build the Docker image:
-    ```bash
-    docker build -t gendan:latest .
-    ```
+   ```bash
+   git clone <repository-url>
+   cd GenDan
+   ```
 
-## Usage
-Run the application:
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run tests to ensure functionality:
+   ```bash
+   pytest
+   ```
+
+### Deployment
+1. Build and deploy using Docker:
+   ```bash
+   ./deploy.sh
+   ```
+
+2. The application will be available at `http://localhost:8080`.
+
+## Testing
+Tests are located in the `tests` directory. To execute:
 ```bash
-docker run -p 8080:8080 gendan:latest
+pytest
 ```
 
-Access the system via `http://localhost:8080`.
+## Contributing
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Submit a pull request.
 
-## Documentation
-Detailed documentation is available in the `docs/` folder, including:
-- User Guides for setup and management.
-- Technical Documentation for system architecture and compliance standards.
-
-## Contributions
-We welcome contributions to enhance and expand the project. Please review our `CONTRIBUTING.md` for guidelines and submit a pull request.
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Contact
-For support and inquiries, reach out to [support@heartlandbioworks.com](mailto:support@heartlandbioworks.com).
+For inquiries or support, please open an issue or contact the maintainers directly.
