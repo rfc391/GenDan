@@ -20,10 +20,10 @@ This application is built with Python and incorporates robust encryption mechani
 
 ### Installation
 1. Clone the repository:
-   ```bash
-  git clone https://github.com/rfc391/GenDan.git
-  cd GenDan
-   ```
+    ```bash
+    git clone https://github.com/rfc391/GenDan.git
+    cd GenDan
+    ```
 
 2. Install dependencies:
    ```bash
