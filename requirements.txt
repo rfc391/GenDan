@@ -1,4 +1,4 @@
-grpcio==1.56.0
+grpcio==1.56.2
 grpcio-tools==1.56.0
 biopython
 flask
